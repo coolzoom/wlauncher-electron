@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+require('update-electron-app')({repo: 'kisha02/wlauncher'})
 
 function createWindow () {
   const win = new BrowserWindow({
