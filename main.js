@@ -14,7 +14,6 @@ function createWindow () {
   //win.removeMenu()
   //win.setResizable(false)
   win.loadFile('index.html')
-  
 }
 
 app.whenReady().then(createWindow)
