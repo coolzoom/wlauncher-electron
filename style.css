@@ -1,0 +1,121 @@
+@font-face {
+	font-family: KentledgeReg;
+	src: url(font/KentledgeReg.otf);
+}
+
+@font-face {
+	font-family: KentledgeHvy;
+	src: url(font/KentledgeHvy.otf);
+}
+
+body{
+	background-image: url(img/bg.jpg);
+}
+
+.mainbtnContainer{
+	margin-left: 50px; 
+	margin-top: 55px; 
+	width:160px; 
+	height: 155px; 
+	font-family: KentledgeReg;
+	font-size: 16px;
+}	
+.mainbtn{
+	cursor: pointer; 
+	box-shadow: 10px 10px 23px -8px rgba(0,0,0,0.751); 
+	width:160px; 
+	height: 150px; 
+	background: linear-gradient(315deg, rgba(20,20,20,1) 0%, rgba(46,46,46,1) 100%);
+	color: #ffd892;
+	border-radius: 15px;
+	opacity: 0.97;
+}
+.mainbtnContainer:hover .mainbtn{
+	background: linear-gradient(338deg, rgba(59,59,59,1) 29%, rgba(32,32,32,1) 100%);
+}	 	  
+.mainbtn:active{
+	opacity: 0.92;
+}	  
+.btnbar{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 8px;
+	margin-right: 8px;
+}
+.topbtn{
+	cursor: pointer; 
+	margin-left: 6px;
+}	
+.topbtn:hover{
+	opacity: 0.7;
+}	
+.server_icon{
+	width: 85px; 
+	height: 100px;
+}
+.server_name{
+	margin-top: 2px;
+}
+.add_icon{
+	width: 85px; 
+	height: 100px;
+	margin-top: 25px;
+}
+.btnedit{
+	zindex: 100;
+	display: none;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	margin-left: 140px;
+	margin-top: -20px;
+	background-image: url(img/edit.png);
+}
+.mainbtnContainer:hover .btnedit{
+	display:block;
+}
+.btnedit:hover{
+	transform: scale(1.1);
+}
+.modal-header, h4, .close {
+	background-color: #5cb85c;
+	color:white !important;
+	text-align: center;
+	font-size: 30px;
+}
+hr {
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.btn-block{
+	background: #1c1c1c;	
+	border: none;
+}
+.btn-block:hover{
+	background: #292929;	
+	border: none;
+}
+ 
+.icon_pick{
+	cursor:pointer;
+	width: 70px; 
+	height: 82px;
+	padding: 5px;
+}
+.icon_pick:hover{
+	background:rgba(0,0,0,0.2);
+	border-radius: 15px;
+}
+
+.icon-pick-modal{
+	margin: 30px; 
+	padding: 20px; 
+}
+
+#editTitle{
+	font-family: KentledgeHvy;	
+	color: #ffd291;
+	
+}
+

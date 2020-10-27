@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wlauncher 2.4.3.</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+	<link rel="stylesheet" href="lib/bootstrap.min.css">
+	<link rel="stylesheet" href="./style.css">
+	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script>if (window.module) module = window.module;</script>
+	<script src="js/script.js"></script>
+</head>
+<body>
+	<div class="btnbar">
+		<a class="topbtn" onclick="window.close();"><img src="img/exit.png" style="height: 20px; width: 20px;" /></a>
+	</div>
+	<div id="container" style="padding-top: 110px; padding-left: 25px; display: flex; flex-wrap: wrap;"></div>	
+	<div class="modal fade" id="editModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:15px 20px; background: url(img/modalHeader.jpg); border-top-left-radius: 4px; border-top-right-radius: 4px;">
+					<button type="button" class="close" data-dismiss="modal" style="opacity: 1"><span class="glyphicon glyphicon-remove" style="font-size: 18px; color: #ffd291; font-weight: 100;"></span></button>
+					<h4 style="background: none;"><span id="editTitle"></span></h4>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<form role="form">
+					<div style="display: flex; flex-direction: horizontal;">
+						<div style="width: 400px;">
+							<div class="form-group">
+								<label for="usrname"><span class="glyphicon glyphicon-tag" style="margin-right: 4px;"></span> Server Name</label>
+								<input type="text" class="form-control" id="servName" placeholder="Enter wow server name">
+							</div>
+							<div class="form-group">
+								<label for="psw"><span class="glyphicon glyphicon-cloud" style="margin-right: 4px;"></span> Realmlist</label>
+								<input type="text" class="form-control" id="servUrl" placeholder="Set realmlist logon.servername.org">
+							</div>
+						</div>
+						<div style="width: 250px; padding-left: 40px; padding-right: 40px;">
+							<center><img src='' class='server_icon' id='servIcon' /></center>
+							<div onclick="getIcons();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" style="margin-right: 7px;"></span> Edit icon</div>
+						</div>
+					</div>
+					<hr>
+					<label><span class="glyphicon glyphicon-folder-open" style="margin-right: 4px;"></span> Wow Client</label>
+					<div class="form-group">
+						<input type="text" id="servClientDir" class="form-control" placeholder="Click here and select your wow.exe file" value="" onclick="setWowDir(1);">
+					</div>
+					<label style="font-weight: normal; cursor: pointer; font-size: 13px;"><input type="checkbox" id="close-launcher" > Close launcher after opening wow client</label>
+					<hr>
+					<div onclick="savebtn();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok" style="margin-right: 7px;"></span> Save</div>
+					</form>
+				</div>
+			</div>      
+		</div>
+	</div> 
+	<div class="modal fade" id="iconModal" role="dialog">
+			<div class="modal-dialog" style="margin-top: 80px">
+				<div class="modal-content icon-pick-modal" id="pickIconContainer"></div>      
+			</div>
+		</div> 							
+	</div>	
+	<input id="wowClientInput" type="file" name="name" style="display: none;" onchange="setWowDir(2);" accept=".exe" />
+</body>
+</html>
