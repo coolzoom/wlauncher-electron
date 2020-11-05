@@ -117,7 +117,7 @@ function setWowDir(mode){
 
 async function getWowVersion() {
 	const { getFileProperties } = require('get-file-properties');
-	metadata = await getFileProperties('D:\\Wow 2.4.3\\Wow.exe')
+	metadata = await getFileProperties(tempDir + '\\Wow.exe')
 	tempVer = metadata.Version;
 }
 
