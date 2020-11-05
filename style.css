@@ -119,3 +119,10 @@ hr {
 	
 }
 
+.firstTimeModalBody{ 	
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 15px;
+	width: 300px;
+	padding:40px 50px;
+}

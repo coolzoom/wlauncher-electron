@@ -1,16 +1,58 @@
+var electron = require('electron');
+var appVersion = electron.remote.app.getVersion();
+var newVersion = '';
+var newVersionUrl = '';
 var path = require('path');
 var fs = require('fs');	
-var configFile = path.resolve(__dirname, './config.json');
-var config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+var userDataPath = (electron.app || electron.remote.app).getPath('userData');
+var configFile = path.resolve(userDataPath, './config.json');
+var config = {};
+var serverobj = {};
 var execFile = require('child_process').spawn;
 var remote = require('electron').remote;
-var serverobj = config.servers;
 var currServId = '';
 var tempIcon = '';
 var tempDir = '';
 var currServ = '';
 
-$( document ).ready(function() { renderBtns(); });
+$( document ).ready(function() { checkConfig(); checkVersion(); });
+
+function checkVersion(){	
+   $.getJSON("https://api.github.com/repos/kisha02/wlauncher/tags").done(function (json) {
+		newVersion = json[0].name;	
+		if(newVersion > appVersion){
+			newVersionUrl = 'https://github.com/kisha02/wlauncher/releases/download/' + newVersion + '/wowlauncher-' + newVersion + '-setup.exe';
+			jQuery("#updateModal").modal();
+		}
+   }); 
+}
+
+function downloadNewVersion(){
+	jQuery( "#dl_btn" ).hide();
+	jQuery( "#dl_progress" ).show();
+	const { DownloaderHelper } = require('node-downloader-helper');
+	const dl = new DownloaderHelper(newVersionUrl, userDataPath);	
+	dl.on('progress', (stats) => {		
+		document.getElementById('dl_progress').innerHTML = 'Downloading... ' + Math.floor(stats.progress) + '%';
+	});
+	dl.on('end', (downloadInfo) => {
+		execFile(downloadInfo.filePath, [], {'detached':true});
+		setTimeout(function(){ window.close(); }, 100);
+	});	
+	dl.start();
+}
+
+function checkConfig(){	
+	try {return JSON.parse(fs.readFileSync(path.resolve(userDataPath, './config.json')))} catch(error) {
+		jQuery("#firstTimeModal").modal();
+		config = {"servers":{"1":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"2":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"3":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"4":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"5":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"6":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"7":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"8":{"name":"","url":"","icon":"","clientDir":"","closeClient":false}}};
+		updateConfig();
+	}finally {
+		config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+		serverobj = config.servers;
+		renderBtns();
+	}
+}
 
 function renderBtns(){
 	var loopcount = 1;
@@ -91,6 +133,9 @@ function savebtn(){
 	serverobj[currServId].closeClient = document.getElementById('close-launcher').checked;
 	if(tempIcon !== ''){
 		serverobj[currServId].icon = tempIcon;
+	}
+	else{
+		serverobj[currServId].icon = "img/icons/tbc1.png";
 	}
 	if(tempDir !== ''){
 		serverobj[currServId].clientDir = tempDir;

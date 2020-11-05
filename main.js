@@ -1,12 +1,13 @@
 const { app, BrowserWindow } = require('electron')
-require('update-electron-app')({repo: 'kisha02/wlauncher'})
+if (require('electron-squirrel-startup')) return app.quit();
 
 function createWindow () {
   const win = new BrowserWindow({
     width: 940,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+	  enableRemoteModule: true
     }, 
 	frame: false,
   })  

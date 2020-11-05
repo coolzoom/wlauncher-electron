@@ -61,6 +61,35 @@
 			</div>
 		</div> 							
 	</div>	
+	<div class="modal fade" id="updateModal" role="dialog">
+			<div class="modal-dialog" style="margin-top: 80px">
+				<div class="modal-body firstTimeModalBody">
+						<center>
+							<img src="img/instalmsg.gif" style="width: 150px;" />
+							<h2>New Version!</h2>
+							<p>There is a new version of Wow Launcher available. Click the button below to download.</p>
+						</center>
+					<hr>
+					<div id="dl_btn" onclick="downloadNewVersion();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-download" style="margin-right: 7px;"></span> Download</div>
+					<div id="dl_progress" style="display: none; text-align: center;">Starting download</div>
+				</div>
+			</div>
+		</div> 							
+	</div>
+	<div class="modal fade" id="firstTimeModal" role="dialog">
+			<div class="modal-dialog" style="margin-top: 80px">
+				<div class="modal-body firstTimeModalBody">
+						<center>
+							<img src="img/instalmsg.gif" style="width: 150px;" />
+							<h2>Thank you!</h2>
+							<p>Thank you for installing Wow Launcher. A shortcut has been created on your desktop.</p>
+						</center>
+					<hr>
+					<div onclick="jQuery('#firstTimeModal').modal('toggle');" class="btn btn-success btn-block"><span class="glyphicon glyphicon-remove" style="margin-right: 7px;"></span> Close</div>
+				</div>
+			</div>
+		</div> 							
+	</div>	
 	<input id="wowClientInput" type="file" name="name" style="display: none;" onchange="setWowDir(2);" accept=".exe" />
 </body>
 </html>
