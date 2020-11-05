@@ -1,7 +1,7 @@
 {
   "name": "Wlauncher",
   "productName": "Wow Launcher",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "World of Warcraft Launch Tool",
   "main": "main.js",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "get-file-properties": "^1.0.1",
     "node-downloader-helper": "^1.0.15"
   },
   "config": {
@@ -31,7 +32,7 @@
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "Wlauncher",
-            "setupExe": "wowlauncher-1.0.2-setup.exe",
+            "setupExe": "wowlauncher-1.0.3-setup.exe",
             "setupIcon": "img/install.ico",
             "loadingGif": "img/installing.gif"
           }

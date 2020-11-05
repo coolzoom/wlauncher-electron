@@ -13,18 +13,19 @@ var remote = require('electron').remote;
 var currServId = '';
 var tempIcon = '';
 var tempDir = '';
+var tempVer = '';
 var currServ = '';
 
 $( document ).ready(function() { checkConfig(); checkVersion(); });
 
 function checkVersion(){	
-   $.getJSON("https://api.github.com/repos/kisha02/wlauncher/tags").done(function (json) {
+	$.getJSON("https://api.github.com/repos/kisha02/wlauncher/tags").done(function (json) {
 		newVersion = json[0].name;	
 		if(newVersion > appVersion){
 			newVersionUrl = 'https://github.com/kisha02/wlauncher/releases/download/' + newVersion + '/wowlauncher-' + newVersion + '-setup.exe';
 			jQuery("#updateModal").modal();
 		}
-   }); 
+	}); 
 }
 
 function downloadNewVersion(){
@@ -45,7 +46,7 @@ function downloadNewVersion(){
 function checkConfig(){	
 	try {return JSON.parse(fs.readFileSync(path.resolve(userDataPath, './config.json')))} catch(error) {
 		jQuery("#firstTimeModal").modal();
-		config = {"servers":{"1":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"2":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"3":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"4":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"5":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"6":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"7":{"name":"","url":"","icon":"","clientDir":"","closeClient":false},"8":{"name":"","url":"","icon":"","clientDir":"","closeClient":false}}};
+		config = {"servers":{"1":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"2":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"3":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"4":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"5":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"6":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"7":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false},"8":{"name":"","url":"","icon":"","clientDir":"","clientVer":"","closeClient":false}}};
 		updateConfig();
 	}finally {
 		config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
@@ -76,7 +77,17 @@ function openWow(server){
 	}
 	else{
 		var wowClient = path.resolve(serverobj[server].clientDir, './Wow.exe');
-		var wowRealmlist = path.resolve(serverobj[server].clientDir, './realmlist.wtf');
+		if(parseInt(serverobj[server].clientVer) === 2){
+			var wowRealmlist = path.resolve(serverobj[server].clientDir, './realmlist.wtf');
+		}
+		else{			
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\enUS\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\enUS\\realmlist.wtf')}
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\enGB\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\enGB\\realmlist.wtf')}
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\deDE\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\deDE\\realmlist.wtf')}
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\frFR\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\frFR\\realmlist.wtf')}
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\ruRU\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\ruRU\\realmlist.wtf')}
+			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\esES\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\esES\\realmlist.wtf')}
+		}
 		fs.writeFile(wowRealmlist, serverobj[server].url, 'utf-8', function (err) {if (err) throw err;});
 		execFile(wowClient, [], {'detached':true});
 		if(serverobj[server].closeClient){
@@ -95,12 +106,19 @@ function setWowDir(mode){
 		if(document.getElementById("wowClientInput").files[0].name === 'Wow.exe'){
 			document.getElementById('servClientDir').value = path.parse(document.getElementById("wowClientInput").files[0].path).dir + "\\wow.exe";
 			tempDir = path.parse(document.getElementById("wowClientInput").files[0].path).dir;
+			getWowVersion();
 		}
 		else{
 			alert('Choose the Wow.exe file');
 			setTimeout(function(){ setWowDir(1); }, 100);
 		}	
 	}	
+}
+
+async function getWowVersion() {
+	const { getFileProperties } = require('get-file-properties');
+	metadata = await getFileProperties('D:\\Wow 2.4.3\\Wow.exe')
+	tempVer = metadata.Version;
 }
 
 function updateConfig(){
@@ -139,6 +157,7 @@ function savebtn(){
 	}
 	if(tempDir !== ''){
 		serverobj[currServId].clientDir = tempDir;
+		serverobj[currServId].clientVer = tempVer;
 	}
 	updateConfig();
 	renderBtns(); 
@@ -161,7 +180,6 @@ function setIcon(path){
 	tempIcon = path;
 	jQuery("#iconModal").modal('toggle');
 }
-
 
 
 
