@@ -71,23 +71,23 @@ function renderBtns(){
 	document.getElementById('container').innerHTML = btnHtml;
 }		
 			
-function openWow(server){	
+function openWow(server){
 	if(serverobj[server].clientDir === ""){
 		alert('No wow directory set. Please set your wow client for slot ' + server);
 		edit_btn(server);
 	}
 	else{
 		var wowClient = path.resolve(serverobj[server].clientDir, './Wow.exe');
-		if(parseInt(serverobj[server].clientVer) === 2){
-			var wowRealmlist = path.resolve(serverobj[server].clientDir, './realmlist.wtf');
-		}
-		else{			
+		if(parseInt(serverobj[server].clientVer.charAt(0)) > 2){
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\enUS\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\enUS\\realmlist.wtf')}
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\enGB\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\enGB\\realmlist.wtf')}
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\deDE\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\deDE\\realmlist.wtf')}
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\frFR\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\frFR\\realmlist.wtf')}
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\ruRU\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\ruRU\\realmlist.wtf')}
 			if (fs.existsSync(path.resolve(serverobj[server].clientDir, '.\\data\\esES\\realmlist.wtf'))) {var wowRealmlist = path.resolve(serverobj[server].clientDir, '.\\data\\esES\\realmlist.wtf')}
+		}
+		else{			
+			var wowRealmlist = path.resolve(serverobj[server].clientDir, './realmlist.wtf');
 		}
 		fs.writeFile(wowRealmlist, serverobj[server].url, 'utf-8', function (err) {if (err) throw err;});
 		execFile(wowClient, [], {'detached':true});

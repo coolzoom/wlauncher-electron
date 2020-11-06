@@ -1,11 +1,11 @@
 @font-face {
 	font-family: KentledgeReg;
-	src: url(font/KentledgeReg.otf);
+	src: url(fonts/KentledgeReg.otf);
 }
 
 @font-face {
 	font-family: KentledgeHvy;
-	src: url(font/KentledgeHvy.otf);
+	src: url(fonts/KentledgeHvy.otf);
 }
 
 body{
