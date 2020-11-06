@@ -26,7 +26,7 @@ https://github.com/kisha02/wlauncher/releases/latest
 
 # Support
 
-If you have any suggestion or issues feel free to message me on Discord @ <b>Kishalol#5129</b>
+If you have any suggestions or issues feel free to message me on discord @ <b>Kishalol#5129</b>
 
 If you like this please give a follow to the following Twitch channel:<br/>
 https://www.twitch.tv/aziegodx
