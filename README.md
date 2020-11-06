@@ -17,7 +17,7 @@ https://github.com/kisha02/wlauncher/releases/latest
 2. Fill in the server name and choose an icon
 3. Fill in the servers realmlist (eg set realmlist logon.warmane.com)
 4. Browse and select the wow client (supported expansions listed above)
-5. Play!
+5. Click on the slot to play!
 
 # Screenshots
 
