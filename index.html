@@ -14,14 +14,14 @@
 </head>
 <body>
 	<div class="btnbar">
-		<a class="topbtn" onclick="window.close();"><img src="img/exit.png" style="height: 20px; width: 20px;" /></a>
+		<a class="topbtn" onclick="window.close();"><span class="glyphicon glyphicon-remove"></span></a>
 	</div>
 	<div id="container" style="padding-top: 110px; padding-left: 25px; display: flex; flex-wrap: wrap;"></div>	
 	<div class="modal fade" id="editModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header" style="padding:15px 20px; background: url(img/modalHeader.jpg); border-top-left-radius: 4px; border-top-right-radius: 4px;">
-					<button type="button" class="close" data-dismiss="modal" style="opacity: 1"><span class="glyphicon glyphicon-remove" style="font-size: 18px; color: #ffd291; font-weight: 100;"></span></button>
+				<div class="modal-header" style="padding:8px 20px; background: url(img/modalHeader.jpg); border-top-left-radius: 4px; border-top-right-radius: 4px;">
+					<a class="topbtnModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
 					<h4 style="background: none;"><span id="editTitle"></span></h4>
 				</div>
 				<div class="modal-body" style="padding:40px 50px;">
@@ -70,7 +70,7 @@
 							<p>There is a new version of Wow Launcher available. Click the button below to download.</p>
 						</center>
 					<hr>
-					<div id="dl_btn" onclick="downloadNewVersion();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-download" style="margin-right: 7px;"></span> Download</div>
+					<div id="dl_btn" onclick="downloadNewVersion();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-save" style="margin-right: 7px;"></span> Download</div>
 					<div id="dl_progress" style="display: none; text-align: center;">Preparing to Download</div>
 				</div>
 			</div>

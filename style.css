@@ -32,6 +32,11 @@ body{
 }
 .mainbtnContainer:hover .mainbtn{
 	background: linear-gradient(338deg, rgba(59,59,59,1) 29%, rgba(32,32,32,1) 100%);
+	box-shadow: 0px 0px 24px 0px rgba(64,255,0,0.62);
+	
+}
+.mainbtnContainer:active .mainbtn{
+	box-shadow: 0px 0px 30px 9px rgba(64,255,0,0.76);
 }	 	  
 .mainbtn:active{
 	opacity: 0.92;
@@ -45,9 +50,37 @@ body{
 }
 .topbtn{
 	cursor: pointer; 
+	display: block;
 	margin-left: 6px;
+	width: 22px;
+	height: 22px;
+	border-radius: 4px;
+	background-color: #fdd192;
+	padding: 3px 3px;
 }	
-.topbtn:hover{
+.topbtnModal{
+	cursor: pointer; 
+	display: block;
+	position: absolute;
+	right: 0;
+	margin-right: 8px;
+	width: 20px;
+	height: 20px;
+	border-radius: 4px;
+	background-color: #fdd192;
+	text-align: center;
+	padding-top: 2px;
+	text-decoration: none !important;
+}	
+.glyphicon-remove{
+	font-size: 16px; 
+	color: #2d100c;
+}
+.topbtnModal .glyphicon-remove{
+	display:block;
+	font-size: 14px; 
+}
+.topbtn:hover, .topbtnModal:hover{
 	opacity: 0.7;
 }	
 .server_icon{
@@ -63,16 +96,23 @@ body{
 	margin-top: 25px;
 }
 .btnedit{
-	zindex: 100;
 	display: none;
 	cursor: pointer;
 	width: 25px;
 	height: 25px;
+	text-align: center;
 	position: absolute;
 	margin-left: 140px;
 	margin-top: -20px;
-	background-image: url(img/edit.png);
+	background-color: #fdd192;
+	border-radius: 12.5px;
+	box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.5);
 }
+
+.glyphicon-pencil{
+	font-size: 12px;
+}
+
 .mainbtnContainer:hover .btnedit{
 	display:block;
 }
@@ -115,8 +155,7 @@ hr {
 
 #editTitle{
 	font-family: KentledgeHvy;	
-	color: #ffd291;
-	
+	color: #ffd291;	
 }
 
 .msgModalBody{ 	

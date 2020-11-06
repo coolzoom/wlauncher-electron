@@ -60,7 +60,7 @@ function renderBtns(){
 	var btnHtml = '';
 	for (const server in serverobj) {
 		if(serverobj[server].name !== ""){
-			btnHtml += "<div class='mainbtnContainer'><div onclick='openWow(\"" + server + "\");' class='mainbtn'><div style='height: 100px'><center><img src='" + serverobj[server].icon + "' class='server_icon' /></center></div><div class='server_name'><center>" + serverobj[server].name + "</center></div></div><div class='btnedit' onclick='edit_btn(" + loopcount + ");'></div></div>";
+			btnHtml += "<div class='mainbtnContainer'><div onclick='openWow(\"" + server + "\");' class='mainbtn'><div style='height: 100px'><center><img src='" + serverobj[server].icon + "' class='server_icon' /></center></div><div class='server_name'><center>" + serverobj[server].name + "</center></div></div><div class='btnedit' onclick='edit_btn(" + loopcount + ");'><span class='glyphicon glyphicon-pencil'></span></div></div>";
 		}
 		else{
 			btnHtml += "<div class='mainbtnContainer'><div onclick='edit_btn(" + loopcount + ");' class='mainbtn'><center><img src='img/add.png' class='add_icon' /></center></div></div>";

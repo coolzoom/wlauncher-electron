@@ -1,7 +1,7 @@
 {
   "name": "Wlauncher",
   "productName": "Wow Launcher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "World of Warcraft Launch Tool",
   "main": "main.js",
   "scripts": {
@@ -32,7 +32,7 @@
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "Wlauncher",
-            "setupExe": "wowlauncher-1.0.4-setup.exe",
+            "setupExe": "wowlauncher-1.0.5-setup.exe",
             "setupIcon": "img/install.ico",
             "loadingGif": "img/installing.gif"
           }
