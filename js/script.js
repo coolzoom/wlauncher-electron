@@ -18,7 +18,8 @@ var currServ = '';
 
 $( document ).ready(function() { checkConfig(); checkVersion(); });
 
-function checkVersion(){	
+function checkVersion(){
+	document.getElementById('version').innerHTML = appVersion;
 	$.getJSON("https://api.github.com/repos/kisha02/wlauncher/tags").done(function (json) {
 		newVersion = json[0].name;	
 		if(newVersion > appVersion){

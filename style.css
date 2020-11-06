@@ -42,13 +42,15 @@ body{
 	opacity: 0.92;
 }	  
 .btnbar{
+	width: 100%;
+}
+
+.topbtn{
 	position: absolute;
 	top: 0;
 	right: 0;
 	margin-top: 8px;
 	margin-right: 8px;
-}
-.topbtn{
 	cursor: pointer; 
 	display: block;
 	margin-left: 6px;
@@ -83,6 +85,14 @@ body{
 .topbtn:hover, .topbtnModal:hover{
 	opacity: 0.7;
 }	
+#version{
+	position: absolute;
+	font-family: KentledgeHvy;
+	color: #2c0f0b;
+	font-size: 16px;
+	margin-left: 660px;
+	margin-top: 38px;
+}
 .server_icon{
 	width: 85px; 
 	height: 100px;
