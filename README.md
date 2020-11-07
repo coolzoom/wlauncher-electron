@@ -26,9 +26,9 @@ https://github.com/kisha02/wlauncher/releases/latest
 
 # Support
 
-If you have any suggestions or issues feel free to message me on discord @ <b>Kishalol#5129</b>
+Any suggestions or issues? Feel free to message me on discord @ <b>Kishalol#5129</b>
 
-If you like this please consider giving a follow to the following Twitch channel:<br/>
+If you like Wow Launcher please consider giving a follow to the following Twitch channel:<br/>
 https://www.twitch.tv/aziegodx
 
 ![Screenshot 1](https://static-cdn.jtvnw.net/jtv_user_pictures/3c226c78-86b3-4df7-96ee-f1dcebcb3f3f-profile_image-300x300.png)
