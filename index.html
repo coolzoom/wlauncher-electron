@@ -13,84 +13,86 @@
 	<script src="./script.js"></script>
 </head>
 <body>
-	<div class="btnbar">
-		<div id="version"></div>
-		<a class="topbtn" onclick="window.close();"><span class="glyphicon glyphicon-remove"></span></a>
-	</div>
-	<div id="container" style="padding-top: 110px; padding-left: 25px; display: flex; flex-wrap: wrap;"></div>	
-	<div class="modal fade" id="editModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="padding:8px 20px; background: url(img/modalHeader.jpg); border-top-left-radius: 4px; border-top-right-radius: 4px;">
-					<a class="topbtnModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
-					<h4 style="background: none;"><span id="editTitle"></span></h4>
-				</div>
-				<div class="modal-body" style="padding:40px 50px;">
-					<form role="form">
-					<div style="display: flex; flex-direction: horizontal;">
-						<div style="width: 400px;">
-							<div class="form-group">
-								<label for="usrname"><span class="glyphicon glyphicon-tag" style="margin-right: 4px;"></span> Server Name</label>
-								<input type="text" class="form-control" id="servName" placeholder="Enter wow server name">
-							</div>
-							<div class="form-group">
-								<label for="psw"><span class="glyphicon glyphicon-cloud" style="margin-right: 4px;"></span> Realmlist</label>
-								<input type="text" class="form-control" id="servUrl" placeholder="Set realmlist logon.servername.org">
-							</div>
-						</div>
-						<div style="width: 250px; padding-left: 40px; padding-right: 40px;">
-							<center><img src='' class='server_icon' id='servIcon' /></center>
-							<div onclick="getIcons();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" style="margin-right: 7px;"></span> Edit icon</div>
-						</div>
-					</div>
-					<hr>
-					<label><span class="glyphicon glyphicon-folder-open" style="margin-right: 4px;"></span> Wow Client</label>
-					<div class="form-group">
-						<input type="text" id="servClientDir" class="form-control" placeholder="Click here and select your wow.exe file" value="" onclick="setWowDir(1);">
-					</div>
-					<label style="font-weight: normal; cursor: pointer; font-size: 13px;"><input type="checkbox" id="close-launcher" > Close launcher after opening wow client</label>
-					<hr>
-					<div onclick="savebtn();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok" style="margin-right: 7px;"></span> Save</div>
-					</form>
-				</div>
-			</div>      
+	<div class="mainWrap">
+		<div class="btnbar">
+			<div id="version"></div>
+			<a class="topbtn" onclick="window.close();"><span class="glyphicon glyphicon-remove"></span></a>
 		</div>
-	</div> 
-	<div class="modal fade" id="iconModal" role="dialog">
-			<div class="modal-dialog" style="margin-top: 80px">
-				<div class="modal-content icon-pick-modal" id="pickIconContainer"></div>      
+		<div id="container" style="padding-top: 110px; padding-left: 25px; display: flex; flex-wrap: wrap;"></div>	
+		<div class="modal fade" id="editModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="padding:8px 20px; background: url(img/modalHeader.jpg); border-top-left-radius: 4px; border-top-right-radius: 4px;">
+						<a class="topbtnModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+						<h4 style="background: none; text-shadow: 1px 1px 6px rgba(0,0,0,0.6);"><span id="editTitle"></span></h4>
+					</div>
+					<div class="modal-body" style="padding:40px 50px;">
+						<form role="form">
+						<div style="display: flex; flex-direction: horizontal;">
+							<div style="width: 400px;">
+								<div class="form-group">
+									<label for="usrname"><span class="glyphicon glyphicon-tag" style="margin-right: 4px;"></span> Server Name</label>
+									<input type="text" class="form-control" id="servName" placeholder="Enter wow server name">
+								</div>
+								<div class="form-group">
+									<label for="psw"><span class="glyphicon glyphicon-cloud" style="margin-right: 4px;"></span> Realmlist</label>
+									<input type="text" class="form-control" id="servUrl" placeholder="Set realmlist logon.servername.org">
+								</div>
+							</div>
+							<div style="width: 250px; padding-left: 40px; padding-right: 40px;">
+								<center><img src='' class='server_icon' id='servIcon' /></center>
+								<div onclick="getIcons();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" style="margin-right: 7px;"></span> Edit icon</div>
+							</div>
+						</div>
+						<hr>
+						<label><span class="glyphicon glyphicon-folder-open" style="margin-right: 4px;"></span> Wow Client</label>
+						<div class="form-group">
+							<input type="text" id="servClientDir" class="form-control" placeholder="Click here and select your wow.exe file" value="" onclick="setWowDir(1);">
+						</div>
+						<label style="font-weight: normal; cursor: pointer; font-size: 13px;"><input type="checkbox" id="close-launcher" > Close launcher after opening wow client</label>
+						<hr>
+						<div onclick="savebtn();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok" style="margin-right: 7px;"></span> Save</div>
+						</form>
+					</div>
+				</div>      
 			</div>
-		</div> 							
-	</div>	
-	<div class="modal fade" id="updateModal" role="dialog">
-			<div class="modal-dialog" style="margin-top: 80px">
-				<div class="modal-body msgModalBody">
-						<center>
-							<img src="img/instalmsg.gif" style="width: 150px;" />
-							<h2>New Version!</h2>
-							<p>There is a new version of Wow Launcher available. Click the button below to download.</p>
-						</center>
-					<hr>
-					<div id="dl_btn" onclick="downloadNewVersion();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-save" style="margin-right: 7px;"></span> Download</div>
-					<div id="dl_progress" style="display: none; text-align: center;">Preparing to Download</div>
+		</div> 
+		<div class="modal fade" id="iconModal" role="dialog">
+				<div class="modal-dialog" style="margin-top: 80px">
+					<div class="modal-content icon-pick-modal" id="pickIconContainer"></div>      
 				</div>
-			</div>
-		</div> 							
+			</div> 							
+		</div>	
+		<div class="modal fade" id="updateModal" role="dialog">
+				<div class="modal-dialog" style="margin-top: 80px">
+					<div class="modal-body msgModalBody">
+							<center>
+								<img src="img/instalmsg.gif" style="width: 150px;" />
+								<h2>New Version!</h2>
+								<p>There is a new version of Wow Launcher available. Click the button below to download.</p>
+							</center>
+						<hr>
+						<div id="dl_btn" onclick="downloadNewVersion();" class="btn btn-success btn-block"><span class="glyphicon glyphicon-save" style="margin-right: 7px;"></span> Download</div>
+						<div id="dl_progress" style="display: none; text-align: center;">Preparing to Download</div>
+					</div>
+				</div>
+			</div> 							
+		</div>
+		<div class="modal fade" id="firstTimeModal" role="dialog">
+				<div class="modal-dialog" style="margin-top: 80px">
+					<div class="modal-body msgModalBody">
+							<center>
+								<img src="img/instalmsg.gif" style="width: 150px;" />
+								<h2>Thank you!</h2>
+								<p>Thank you for installing Wow Launcher. A shortcut has been created on your desktop.</p>
+							</center>
+						<hr>
+						<div onclick="jQuery('#firstTimeModal').modal('toggle');" class="btn btn-success btn-block"><span class="glyphicon glyphicon-remove" style="margin-right: 7px;"></span> Close</div>
+					</div>
+				</div>
+			</div> 							
+		</div>	
+		<input id="wowClientInput" type="file" name="name" style="display: none;" onchange="setWowDir(2);" accept=".exe" />
 	</div>
-	<div class="modal fade" id="firstTimeModal" role="dialog">
-			<div class="modal-dialog" style="margin-top: 80px">
-				<div class="modal-body msgModalBody">
-						<center>
-							<img src="img/instalmsg.gif" style="width: 150px;" />
-							<h2>Thank you!</h2>
-							<p>Thank you for installing Wow Launcher. A shortcut has been created on your desktop.</p>
-						</center>
-					<hr>
-					<div onclick="jQuery('#firstTimeModal').modal('toggle');" class="btn btn-success btn-block"><span class="glyphicon glyphicon-remove" style="margin-right: 7px;"></span> Close</div>
-				</div>
-			</div>
-		</div> 							
-	</div>	
-	<input id="wowClientInput" type="file" name="name" style="display: none;" onchange="setWowDir(2);" accept=".exe" />
 </body>
 </html>
