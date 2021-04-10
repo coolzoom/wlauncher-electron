@@ -34,3 +34,8 @@ https://www.twitch.tv/aziegodx
 ![Screenshot 1](https://static-cdn.jtvnw.net/jtv_user_pictures/3c226c78-86b3-4df7-96ee-f1dcebcb3f3f-profile_image-300x300.png)
 
 Wow Launcher is created for Windows using Electron framework.
+
+# build
+- yarn
+- yarn start
+- electron-builder --win --x64
